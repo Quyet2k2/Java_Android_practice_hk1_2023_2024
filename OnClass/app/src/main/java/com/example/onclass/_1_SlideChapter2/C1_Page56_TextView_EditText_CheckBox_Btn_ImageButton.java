@@ -1,4 +1,4 @@
-package com.example.onclass.SlideChapter2;
+package com.example.onclass._1_SlideChapter2;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.onclass.R;
 
-public class Page56_TextView_EditText_CheckBox_Btn_ImageButton extends AppCompatActivity {
+public class C1_Page56_TextView_EditText_CheckBox_Btn_ImageButton extends AppCompatActivity {
     Button btn_thanh_tien, btn_tiep, btn_thong_ke;
     ImageButton btnExit;
     EditText edit_ten_kh, edit_sl_sach, edit_thanh_tien, edit_tong_so_kh, edit_tong_so_kh_VIP, edit_tong_doanh_thu;
@@ -23,39 +23,50 @@ public class Page56_TextView_EditText_CheckBox_Btn_ImageButton extends AppCompat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_page58_text_view_edit_text_check_box_btn_image_button);
+        setContentView(R.layout.activity_1_page58_text_view_edit_text_check_box_btn_image_button);
         initView();
 
         btn_thanh_tien.setOnClickListener(view -> {
-            int sl_Sach = Integer.parseInt(edit_sl_sach.getText().toString());
-            int res = sl_Sach * 20000;
-            if (cb_vip.isChecked()) {
-                res = (res * 9) / 10;
-            }
-            edit_thanh_tien.setText(String.valueOf(res));
-            tong_doanhthu += res;
+            try {
+                // Mã có thể gây ra ngoại lệ
+                int sl_Sach = Integer.parseInt(edit_sl_sach.getText().toString());
+                int res = sl_Sach * 20000;
+                if (cb_vip.isChecked()) {
+                    res = (res * 9) / 10;
+                }
+                edit_thanh_tien.setText(String.valueOf(res));
+                tong_doanhthu += res;
 
 //           Lưu thông tin khách hàng sau khi tính tiền
-            if (cb_vip.isChecked()) {
-                tong_kh++;
-                tongkh_vip++;
-            } else {
-                tong_kh++;
+                if (cb_vip.isChecked()) {
+                    tong_kh++;
+                    tongkh_vip++;
+                } else {
+                    tong_kh++;
+                }
+                edit_sl_sach.requestFocus();
+
+                cb_vip.setChecked(false);
+                edit_sl_sach.setText("");
+
+            } catch (Exception e) {
+                // Xử lý ngoại lệ ở đây
+                edit_thanh_tien.setText(String.valueOf(e.getMessage()));
             }
-            edit_sl_sach.requestFocus();
+
         });
 
         btn_tiep.setOnClickListener(view -> {
             edit_ten_kh.setText("");
-            cb_vip.setChecked(false);
-            edit_sl_sach.setText("");
-
-            if (cb_vip.isChecked()) {
-                tong_kh++;
-                tongkh_vip++;
-            } else {
-                tong_kh++;
-            }
+//            cb_vip.setChecked(false);
+//            edit_sl_sach.setText("");
+//
+//            if (cb_vip.isChecked()) {
+//                tong_kh++;
+//                tongkh_vip++;
+//            } else {
+//                tong_kh++;
+//            }
             edit_ten_kh.requestFocus();
         });
 

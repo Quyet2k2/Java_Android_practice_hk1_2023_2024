@@ -1,7 +1,4 @@
-package com.example.onclass.ListView;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.onclass._2_Model;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +9,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.onclass.R;
 
 import java.util.ArrayList;
 
-public class ListViewBasic extends AppCompatActivity {
+public class C2_ListViewBasic extends AppCompatActivity {
     EditText txtInput;
     Button nut1, nut2, nut3;
     ListView listView;
@@ -28,15 +28,11 @@ public class ListViewBasic extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view_basic);
+        setContentView(R.layout.activity_2_list_view_basic);
         AnhXa();
 
-        items = new ArrayList<String>();
+        items = new ArrayList<>();
         items.add("Nguyen Van A");
-        items.add("Nguyen Van B");
-        items.add("Nguyen Van C");
-        items.add("Nguyen Van D");
-        items.add("Nguyen Van E");
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(adapter);
@@ -52,7 +48,7 @@ public class ListViewBasic extends AppCompatActivity {
 
         nut1.setOnClickListener(v -> {
             String inputText = txtInput.getText().toString();
-            if (inputText.length() >= 5) {
+            if (inputText.length() >= 1) {
                 items.add(inputText);
                 adapter.notifyDataSetChanged();
                 txtInput.setText(""); // Reset EditText
@@ -62,7 +58,7 @@ public class ListViewBasic extends AppCompatActivity {
         // Trong phương thức onCreate() của MainActivity
         nut2.setOnClickListener(v -> {
             if (selectedPosition != -1) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListViewBasic.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(C2_ListViewBasic.this);
                 builder.setTitle("Xoá Mục")
                         .setMessage("Bạn có chắc chắn muốn xoá mục này?")
                         .setPositiveButton("Xoá", (dialog, which) -> {
@@ -76,7 +72,7 @@ public class ListViewBasic extends AppCompatActivity {
                         })
                         .show();
             } else {
-                Toast.makeText(ListViewBasic.this, "Không có mục được chọn để xoá", Toast.LENGTH_SHORT).show();
+                Toast.makeText(C2_ListViewBasic.this, "Không có mục được chọn để xoá", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -84,7 +80,7 @@ public class ListViewBasic extends AppCompatActivity {
         nut3.setOnClickListener(v -> {
             String updatedText = txtInput.getText().toString();
             if (selectedPosition != -1) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListViewBasic.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(C2_ListViewBasic.this);
                 builder.setTitle("Sửa Mục")
                         .setMessage("Bạn có chắc chắn muốn sửa mục này?")
                         .setPositiveButton("Sửa", (dialog, which) -> {
@@ -100,13 +96,13 @@ public class ListViewBasic extends AppCompatActivity {
                         })
                         .show();
             } else {
-                Toast.makeText(ListViewBasic.this, "Chọn mục cần sửa trước", Toast.LENGTH_SHORT).show();
+                Toast.makeText(C2_ListViewBasic.this, "Chọn mục cần sửa trước", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void AnhXa(){
+    private void AnhXa() {
         txtInput = findViewById(R.id.txtiput);
         nut1 = findViewById(R.id.nut1);
         nut3 = findViewById(R.id.nut3);

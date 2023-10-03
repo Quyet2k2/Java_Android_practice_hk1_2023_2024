@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".SlideChapter2.Page56_TextView_EditText_CheckBox_Btn_ImageButton">
+    tools:context="._1_SlideChapter2.C1_Page56_TextView_EditText_CheckBox_Btn_ImageButton">
 
     <RelativeLayout
         android:id="@+id/mainLayout"
@@ -226,6 +226,7 @@
             android:layout_below="@+id/RowColor"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="0dp"
+            android:importantForAccessibility="no"
             android:src="@mipmap/ic_launcher"
             android:text="Exit" />
     </RelativeLayout>
